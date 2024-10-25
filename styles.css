@@ -88,3 +88,20 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
 }
+
+/* Styles for social media links */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 0 10px;
+}
+
+.social-links img {
+    transition: transform 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+}
