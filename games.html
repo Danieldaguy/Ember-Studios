@@ -10,7 +10,7 @@
     <div id="container">
         <h1>Ember Studios | Games</h1>
         <div class="tabs">
-            <button class="tab-button" onclick="showTab('proxy')">Proxy</button>
+            <a class="tab-button" href="index.html">Home</a> <!-- Link back to index.html -->
             <button class="tab-button active" onclick="showTab('games')">Games</button>
         </div>
 
@@ -28,31 +28,13 @@
         </div>
 
         <div class="social-links">
-            <a href="https://discord.com/YOUR_DISCORD_LINK" target="_blank">
-                <img src="discord-logo.png" alt="Discord" width="40" height="40">
+            <a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">
+                <img src="discord-logo.png" alt="Discord" width="50" />
             </a>
-            <a href="https://youtube.com/YOUR_YOUTUBE_LINK" target="_blank">
-                <img src="youtube-logo.png" alt="YouTube" width="40" height="40">
+            <a href="https://youtube.com/YOUR_YOUTUBE_CHANNEL" target="_blank">
+                <img src="youtube-logo.png" alt="YouTube" width="50" />
             </a>
         </div>
     </div>
-
-    <script>
-        function showTab(tabName) {
-            const tabs = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-button');
-
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-
-            document.getElementById(tabName).classList.add('active');
-            document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`).classList.add('active');
-        }
-    </script>
 </body>
 </html>
