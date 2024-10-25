@@ -11,30 +11,33 @@
         <h1>Ember Studios | Games</h1>
         <div class="tabs">
             <a class="tab-button" href="index.html">Home</a> <!-- Link back to index.html -->
-            <button class="tab-button active" onclick="showTab('games')">Games</button>
-        </div>
-
-        <div id="games" class="tab-content active">
-            <h2>Games</h2>
-            <div class="game">
-                <h3>2048</h3>
-                <iframe src="https://2048game.com/" width="400" height="600" style="border:none;"></iframe>
-            </div>
-
-            <div class="game">
-                <h3>Tetris</h3>
-                <iframe src="https://tetris.com/play-tetris" width="400" height="600" style="border:none;"></iframe>
-            </div>
-        </div>
-
-        <div class="social-links">
-            <a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">
-                <img src="discord-logo.png" alt="Discord" width="50" />
-            </a>
-            <a href="https://youtube.com/YOUR_YOUTUBE_CHANNEL" target="_blank">
-                <img src="youtube-logo.png" alt="YouTube" width="50" />
-            </a>
         </div>
     </div>
+
+    <div class="game-catalog">
+        <h2>Game Catalog</h2>
+        <div class="game">
+            <button onclick="openGame('https://2048game.com/')">2048</button>
+        </div>
+        <div class="game">
+            <button onclick="openGame('https://tetris.com/play-tetris')">Tetris</button>
+        </div>
+        <!-- Add more games as needed -->
+    </div>
+
+    <div class="social-links">
+        <a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">
+            <img src="discord-logo.png" alt="Discord" width="50" />
+        </a>
+        <a href="https://youtube.com/YOUR_YOUTUBE_CHANNEL" target="_blank">
+            <img src="youtube-logo.png" alt="YouTube" width="50" />
+        </a>
+    </div>
+
+    <script>
+        function openGame(url) {
+            window.open(url, '_blank'); // Opens the game in a new tab
+        }
+    </script>
 </body>
 </html>
