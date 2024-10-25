@@ -3,151 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Catalog</title>
+    <title>Ember Studios | Games</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: url('background.jpg') no-repeat center center fixed; /* Set a background image that doesn't repeat */
-            background-size: cover;
-            color: white;
+            background: linear-gradient(to bottom, #121212, #e63946);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin: 0;
-            padding: 0;
+            text-align: center;
+            height: 100vh;
         }
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
+        h1, h2 {
+            margin-bottom: 20px;
+            font-weight: bold;
         }
 
         #container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            margin-top: 20px;
         }
 
-        .game-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid layout */
-            gap: 10px; /* Space between buttons */
-            padding: 20px;
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
         }
 
-        .game-button {
+        .tab-button {
             background: rgba(255, 255, 255, 0.2);
             border: none;
             border-radius: 5px;
-            padding: 15px;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .game-catalog {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .game-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .game {
+            margin: 10px;
+        }
+
+        .game button {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
             color: white;
             cursor: pointer;
             transition: background 0.3s;
         }
 
-        .game-button:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .game button:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
 
-        #embed-container {
+        .game-embed {
+            position: relative;
             margin-top: 20px;
-            display: none; /* Initially hide the embed */
-            border: 2px solid #fff; /* Optional: add a border */
-            border-radius: 10px;
-            overflow: hidden;
         }
 
-        #embed {
+        #game-frame {
             width: 100%;
-            height: 500px; /* Adjust height as needed */
+            height: 600px; /* Set your desired height */
+            border: none;
         }
 
-        #fullscreen-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.7);
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
             border: none;
+            border-radius: 5px;
             padding: 10px;
             cursor: pointer;
             z-index: 10;
         }
 
-        #close-embed-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 0, 0, 0.7);
-            border: none;
-            padding: 5px;
-            color: white;
-            cursor: pointer;
-            display: none; /* Hidden by default */
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links img {
+            width: 40px;
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Game Catalog</h1>
     <div id="container">
-        <div class="game-buttons">
-            <button class="game-button" data-url="https://html5games.com/game/2048">2048</button>
-            <button class="game-button" data-url="https://html5games.com/game/fruit-slice">Fruit Slice</button>
-            <button class="game-button" data-url="https://html5games.com/game/space-escape">Space Escape</button>
-            <button class="game-button" data-url="https://html5games.com/game/tower-defense">Tower Defense</button>
-            <button class="game-button" data-url="https://html5games.com/game/pacman">Pacman</button>
-            <button class="game-button" data-url="https://html5games.com/game/cookie-clicker">Cookie Clicker</button>
-            <button class="game-button" data-url="https://html5games.com/game/snake">Snake</button>
-            <button class="game-button" data-url="https://html5games.com/game/flappy-bird">Flappy Bird</button>
-            <button class="game-button" data-url="https://html5games.com/game/idle-empire">Idle Empire</button>
-            <button class="game-button" data-url="https://html5games.com/game/word-search">Word Search</button>
-            <button class="game-button" data-url="https://html5games.com/game/krunker-io">Krunker.io</button>
-            <button class="game-button" data-url="https://html5games.com/game/fall-guys">Fall Guys</button>
-            <button class="game-button" data-url="https://html5games.com/game/among-us">Among Us</button>
-            <button class="game-button" data-url="https://html5games.com/game/lift-io">Lift.io</button>
-            <button class="game-button" data-url="https://html5games.com/game/stickman-archer">Stickman Archer</button>
-            <button class="game-button" data-url="https://html5games.com/game/rainbow-friends">Rainbow Friends</button>
+        <h1>Game Catalog</h1>
+        <div class="tabs">
+            <a class="tab-button" href="games.html">Games</a>
+            <a class="tab-button" href="index.html">Home</a>
         </div>
-        
-        <div id="embed-container">
-            <button id="close-embed-btn">X</button>
-            <iframe id="embed" src="" frameborder="0"></iframe>
+
+        <div class="game-catalog">
+            <div class="game-list">
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game1">Game 1</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game2">Game 2</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game3">Game 3</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game4">Game 4</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game5">Game 5</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game6">Game 6</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game7">Game 7</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game8">Game 8</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game9">Game 9</button>
+                </div>
+                <div class="game">
+                    <button class="game-button" data-game-url="https://html5games.com/game10">Game 10</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-embed">
+            <iframe id="game-frame" src=""></iframe> <!-- Embed for the games -->
+            <button class="fullscreen-btn" id="fullscreen-btn">Fullscreen</button> <!-- Fullscreen button -->
         </div>
     </div>
 
-    <button id="fullscreen-btn">Fullscreen</button>
+    <div class="social-links">
+        <a href="https://discord.gg/tS4UFEFrS4" target="_blank">
+            <img src="discord-logo.png" alt="Discord" />
+        </a>
+        <a href="https://youtube.com/@3mberstudio?si=NuKmCHyGJN4LkU6g" target="_blank">
+            <img src="youtube-logo.png" alt="YouTube" />
+        </a>
+    </div>
 
     <script>
         const gameButtons = document.querySelectorAll('.game-button');
-        const embedContainer = document.getElementById('embed-container');
-        const embed = document.getElementById('embed');
-        const closeEmbedBtn = document.getElementById('close-embed-btn');
+        const gameFrame = document.getElementById('game-frame');
         const fullscreenBtn = document.getElementById('fullscreen-btn');
 
         gameButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const url = button.getAttribute('data-url');
-                embed.src = url; // Set the iframe source
-                embedContainer.style.display = 'block'; // Show the embed container
-                document.body.scrollTop = embedContainer.offsetTop; // Scroll to the embed
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default button behavior
+                const gameUrl = button.getAttribute('data-game-url');
+                gameFrame.src = gameUrl; // Set iframe src to the game URL
+                gameFrame.style.display = 'block'; // Show the embed
+                window.scrollTo(0, gameFrame.offsetTop); // Scroll to the embed
             });
         });
 
-        closeEmbedBtn.addEventListener('click', () => {
-            embed.src = ''; // Clear the iframe src to stop the game
-            embedContainer.style.display = 'none'; // Hide the embed container
-        });
-
-        fullscreenBtn.addEventListener('click', () => {
-            if (embedContainer.requestFullscreen) {
-                embedContainer.requestFullscreen();
-            } else if (embedContainer.mozRequestFullScreen) { // Firefox
-                embedContainer.mozRequestFullScreen();
-            } else if (embedContainer.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-                embedContainer.webkitRequestFullscreen();
-            } else if (embedContainer.msRequestFullscreen) { // IE/Edge
-                embedContainer.msRequestFullscreen();
+        fullscreenBtn.addEventListener('click', function() {
+            if (gameFrame.requestFullscreen) {
+                gameFrame.requestFullscreen();
+            } else if (gameFrame.webkitRequestFullscreen) { // Safari
+                gameFrame.webkitRequestFullscreen();
+            } else if (gameFrame.msRequestFullscreen) { // IE11
+                gameFrame.msRequestFullscreen();
             }
         });
     </script>
