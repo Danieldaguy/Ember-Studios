@@ -1,30 +1,33 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, black, red);
-    background-attachment: fixed; /* Keep the background fixed */
-    background-repeat: no-repeat; /* Prevent background from repeating */
-    background-size: cover; /* Cover the entire background */
-    color: white;
+    background: linear-gradient(to bottom, #121212, #e63946);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
     text-align: center;
+    height: 100vh;
 }
 
-h1 {
+h1, h2 {
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 #container {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    width: 400px;
-    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px;
 }
 
 .tabs {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 20px;
 }
 
@@ -45,46 +48,60 @@ h1 {
 }
 
 .game-catalog {
-    margin: 20px auto;
-    width: 400px; /* Same width as the container */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 600px;
 }
 
 .game-list {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.game {
-    margin: 10px 0;
-}
-
-button {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #2575fc;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #6a11cb;
-}
-
-.game-embed {
-    margin-top: 20px;
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
-iframe {
-    width: 100%;
-    height: 600px; /* Adjust height based on your preference */
+.game {
+    margin: 10px;
+}
+
+.game button {
+    background: rgba(255, 255, 255, 0.3);
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.game button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.game-embed {
+    position: relative;
+    margin-top: 20px;
+}
+
+#game-frame {
+    width: 100%;
+    height: 600px; /* Set your desired height */
+    border: none;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
 }
 
 .social-links {
@@ -92,5 +109,6 @@ iframe {
 }
 
 .social-links img {
+    width: 40px;
     margin: 0 10px;
 }
