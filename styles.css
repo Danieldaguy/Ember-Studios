@@ -3,10 +3,10 @@ body {
     background: linear-gradient(to bottom, black, red);
     background-attachment: fixed; /* Keep the background fixed */
     background-repeat: no-repeat; /* Prevent background from repeating */
+    background-size: cover; /* Cover the entire background */
     color: white;
     margin: 0;
     text-align: center;
-    overflow: hidden; /* Prevent scrolling of the body */
 }
 
 h1 {
