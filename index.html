@@ -4,47 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ember Studios | Home</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="container">
-        <h1>Ember Studios | Home</h1>
+        <h1>Welcome to Ember Studios!</h1>
         <div class="tabs">
-            <button class="tab-button active" onclick="showTab('proxy')">Proxy</button>
-            <a class="tab-button" href="games.html">Games</a> <!-- Direct link to games.html -->
+            <a class="tab-button" href="games.html">Games</a>
+            <a class="tab-button" href="index.html">Home</a>
         </div>
-
-        <div id="proxy" class="tab-content active">
-            <input type="text" id="url" placeholder="Enter URL to fetch" />
-            <button id="fetchBtn">Fetch</button>
-            <div id="result"></div>
-        </div>
+        <p>Your go-to place for exciting games and entertainment!</p>
     </div>
 
-    <script>
-        document.getElementById('fetchBtn').addEventListener('click', async () => {
-            const url = document.getElementById('url').value;
-            const resultDiv = document.getElementById('result');
-
-            // CORS Anywhere proxy URL
-            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-
-            try {
-                const response = await fetch(proxyUrl + url, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-
-                if (!response.ok) throw new Error('Network response was not ok');
-
-                const data = await response.text();
-                resultDiv.innerHTML = `<pre>${data}</pre>`;
-            } catch (error) {
-                resultDiv.innerHTML = `Error: ${error.message}`;
-            }
-        });
-    </script>
+    <div class="social-links">
+        <a href="https://discord.gg/tS4UFEFrS4" target="_blank">
+            <img src="discord-logo.png" alt="Discord" />
+        </a>
+        <a href="https://youtube.com/@3mberstudio?si=NuKmCHyGJN4LkU6g" target="_blank">
+            <img src="youtube-logo.png" alt="YouTube" />
+        </a>
+    </div>
 </body>
 </html>
