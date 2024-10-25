@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ember Studios | Home</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <div id="container">
+        <h1>Ember Studios | Home</h1>
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('proxy')">Proxy</button>
+            <a class="tab-button" href="games.html">Games</a> <!-- Direct link to games.html -->
+        </div>
 
+        <div id="proxy" class="tab-content active">
+            <input type="text" id="url" placeholder="Enter URL to fetch" />
+            <button id="fetchBtn">Fetch</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fetchBtn').addEventListener('click', async () => {
+            const url = document.getElementById('url').value;
+            const resultDiv = document.getElementById('result');
+
+            // CORS Anywhere proxy URL
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+
+            try {
+                const response = await fetch(proxyUrl + url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                const data = await response.text();
+                resultDiv.innerHTML = `<pre>${data}</pre>`;
+            } catch (error) {
+                resultDiv.innerHTML = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
