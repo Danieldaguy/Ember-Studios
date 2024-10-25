@@ -2,10 +2,6 @@ body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to bottom, black, red);
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
     text-align: center;
 }
@@ -20,6 +16,7 @@ h1 {
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     width: 400px;
+    margin: auto;
 }
 
 .tabs {
@@ -42,10 +39,6 @@ h1 {
 
 .tab-button:hover {
     background: rgba(255, 255, 255, 0.3);
-}
-
-.tab-button.active {
-    background: rgba(255, 255, 255, 0.5);
 }
 
 .tab-content {
@@ -89,19 +82,19 @@ button:hover {
     border-radius: 5px;
 }
 
-/* Styles for social media links */
 .social-links {
     margin-top: 20px;
 }
 
-.social-links a {
+.social-links img {
     margin: 0 10px;
 }
 
-.social-links img {
-    transition: transform 0.3s;
+.game-catalog {
+    margin: 20px auto;
+    width: 400px; /* Same width as the container */
 }
 
-.social-links img:hover {
-    transform: scale(1.1);
+.game {
+    margin: 10px 0;
 }
