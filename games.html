@@ -3,124 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ember Studios | Games</title>
+    <title>Game Catalog</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Additional styles for the X button */
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(255, 0, 0, 0.7);
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('background.jpg') no-repeat center center fixed; /* Set a background image that doesn't repeat */
+            background-size: cover;
             color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .game-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid layout */
+            gap: 10px; /* Space between buttons */
+            padding: 20px;
+        }
+
+        .game-button {
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             border-radius: 5px;
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .game-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        #embed-container {
+            margin-top: 20px;
+            display: none; /* Initially hide the embed */
+            border: 2px solid #fff; /* Optional: add a border */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #embed {
+            width: 100%;
+            height: 500px; /* Adjust height as needed */
+        }
+
+        #fullscreen-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
             padding: 10px;
             cursor: pointer;
             z-index: 10;
-            display: none; /* Initially hidden */
+        }
+
+        #close-embed-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 0, 0, 0.7);
+            border: none;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+            display: none; /* Hidden by default */
         }
     </style>
 </head>
 <body>
+    <h1>Game Catalog</h1>
     <div id="container">
-        <h1>Ember Studios | Games</h1>
-        <div class="tabs">
-            <a class="tab-button" href="index.html">Home</a>
+        <div class="game-buttons">
+            <button class="game-button" data-url="https://html5games.com/game/2048">2048</button>
+            <button class="game-button" data-url="https://html5games.com/game/fruit-slice">Fruit Slice</button>
+            <button class="game-button" data-url="https://html5games.com/game/space-escape">Space Escape</button>
+            <button class="game-button" data-url="https://html5games.com/game/tower-defense">Tower Defense</button>
+            <button class="game-button" data-url="https://html5games.com/game/pacman">Pacman</button>
+            <button class="game-button" data-url="https://html5games.com/game/cookie-clicker">Cookie Clicker</button>
+            <button class="game-button" data-url="https://html5games.com/game/snake">Snake</button>
+            <button class="game-button" data-url="https://html5games.com/game/flappy-bird">Flappy Bird</button>
+            <button class="game-button" data-url="https://html5games.com/game/idle-empire">Idle Empire</button>
+            <button class="game-button" data-url="https://html5games.com/game/word-search">Word Search</button>
+            <button class="game-button" data-url="https://html5games.com/game/krunker-io">Krunker.io</button>
+            <button class="game-button" data-url="https://html5games.com/game/fall-guys">Fall Guys</button>
+            <button class="game-button" data-url="https://html5games.com/game/among-us">Among Us</button>
+            <button class="game-button" data-url="https://html5games.com/game/lift-io">Lift.io</button>
+            <button class="game-button" data-url="https://html5games.com/game/stickman-archer">Stickman Archer</button>
+            <button class="game-button" data-url="https://html5games.com/game/rainbow-friends">Rainbow Friends</button>
+        </div>
+        
+        <div id="embed-container">
+            <button id="close-embed-btn">X</button>
+            <iframe id="embed" src="" frameborder="0"></iframe>
         </div>
     </div>
 
-    <div class="game-catalog">
-        <h2>Game Catalog</h2>
-        <div class="game-list">
-            <div class="game">
-                <button onclick="loadGame('https://2048game.com/embed')">2048</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://tetr.io/?embed')">Tetris</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/bloxorz')">Bloxorz</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/slope')">Slope</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/adventure-time-1')">Adventure Time</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/krunker')">Krunker</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/geometry-dash')">Geometry Dash</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/line-rider')">Line Rider</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/agar-io')">Agar.io</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/roll-the-ball')">Roll the Ball</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/jetpack-joyride')">Jetpack Joyride</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/super-mario-bros')">Super Mario Bros</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/superhot')">Superhot</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/zombie-attack')">Zombie Attack</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/squid-game')">Squid Game</button>
-            </div>
-            <div class="game">
-                <button onclick="loadGame('https://www.crazygames.com/game/dont-touch-the-red')">Don't Touch the Red</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="game-embed">
-        <button class="close-btn" id="close-btn" onclick="closeGame()">X</button>
-        <button class="fullscreen-btn" onclick="toggleFullScreen()">Fullscreen</button>
-        <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="social-links">
-        <a href="https://discord.gg/tS4UFEFrS4" target="_blank">
-            <img src="discord-logo.png" alt="Discord" />
-        </a>
-        <a href="https://youtube.com/@3mberstudio?si=NuKmCHyGJN4LkU6g" target="_blank">
-            <img src="youtube-logo.png" alt="YouTube" />
-        </a>
-    </div>
+    <button id="fullscreen-btn">Fullscreen</button>
 
     <script>
-        function loadGame(url) {
-            const iframe = document.getElementById('game-frame');
-            iframe.src = url; // Load the game URL into the iframe
-            document.getElementById('close-btn').style.display = 'block'; // Show the close button
-        }
+        const gameButtons = document.querySelectorAll('.game-button');
+        const embedContainer = document.getElementById('embed-container');
+        const embed = document.getElementById('embed');
+        const closeEmbedBtn = document.getElementById('close-embed-btn');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
 
-        function closeGame() {
-            document.getElementById('game-frame').src = ''; // Clear the iframe source
-            document.getElementById('close-btn').style.display = 'none'; // Hide the close button
-        }
+        gameButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const url = button.getAttribute('data-url');
+                embed.src = url; // Set the iframe source
+                embedContainer.style.display = 'block'; // Show the embed container
+                document.body.scrollTop = embedContainer.offsetTop; // Scroll to the embed
+            });
+        });
 
-        function toggleFullScreen() {
-            const elem = document.getElementById('game-frame');
-            if (!document.fullscreenElement) {
-                elem.requestFullscreen();
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
+        closeEmbedBtn.addEventListener('click', () => {
+            embed.src = ''; // Clear the iframe src to stop the game
+            embedContainer.style.display = 'none'; // Hide the embed container
+        });
+
+        fullscreenBtn.addEventListener('click', () => {
+            if (embedContainer.requestFullscreen) {
+                embedContainer.requestFullscreen();
+            } else if (embedContainer.mozRequestFullScreen) { // Firefox
+                embedContainer.mozRequestFullScreen();
+            } else if (embedContainer.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                embedContainer.webkitRequestFullscreen();
+            } else if (embedContainer.msRequestFullscreen) { // IE/Edge
+                embedContainer.msRequestFullscreen();
             }
-        }
+        });
     </script>
 </body>
 </html>
