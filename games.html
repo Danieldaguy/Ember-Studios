@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ember Studios | Games</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <div id="container">
+        <h1>Ember Studios | Games</h1>
+        <div class="tabs">
+            <button class="tab-button" onclick="showTab('proxy')">Proxy</button>
+            <button class="tab-button active" onclick="showTab('games')">Games</button>
+        </div>
+
+        <div id="games" class="tab-content active">
+            <h2>Games</h2>
+            <div class="game">
+                <h3>2048</h3>
+                <iframe src="https://2048game.com/" width="400" height="600" style="border:none;"></iframe>
+            </div>
+
+            <div class="game">
+                <h3>Tetris</h3>
+                <iframe src="https://tetris.com/play-tetris" width="400" height="600" style="border:none;"></iframe>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://discord.com/YOUR_DISCORD_LINK" target="_blank">
+                <img src="discord-logo.png" alt="Discord" width="40" height="40">
+            </a>
+            <a href="https://youtube.com/YOUR_YOUTUBE_LINK" target="_blank">
+                <img src="youtube-logo.png" alt="YouTube" width="40" height="40">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
